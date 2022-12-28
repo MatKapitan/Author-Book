@@ -24,11 +24,11 @@ public class AuthorController {
     }
 
 
-    // Get all
-    @GetMapping
-    List<Author> getAllAuthors(){
-        return authorService.getAllAuthors();
-    }
+     //Get all
+//    @GetMapping
+//    List<Author> allAuthors(@RequestParam(defaultValue = "createdAt", required = false) String sortBy){
+//        return authorService.getAllAuthors(sortBy);
+//    }
 
 
     // Get by id
@@ -47,6 +47,14 @@ public class AuthorController {
     void deleteAuthor(@PathVariable Long id) throws Exception {
         authorService.deleteAuthor(id);
     }
+
+    @PutMapping("/{authorId}/addbook/{bookId}")
+    void addBookToAuthor(@PathVariable Long authorId, @PathVariable Long bookId){
+        authorService.addBookToAuthor(authorId,bookId);
+
+
+    }
+
 
 
 

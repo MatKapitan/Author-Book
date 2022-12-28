@@ -1,7 +1,11 @@
 package com.kniznica.Book.Author.book.domain;
 
 
+import com.kniznica.Book.Author.author.domain.Author;
 import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Book {
@@ -15,7 +19,11 @@ public class Book {
     private String genre;
 
     @ManyToMany
-    @JoinTable
+    @JoinTable(name = "Author_Book",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id")
+    )
+    public Set<Author>allAuthors = new HashSet<>();
 
 
 
@@ -49,4 +57,6 @@ public class Book {
     public void setGenre(String genre) {
         this.genre = genre;
     }
+
+
 }
