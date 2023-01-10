@@ -20,14 +20,14 @@ public class BookController {
         return bookService.getAllBooks();
     }
 
-//    @GetMapping("/{id}")
-//    Book getBookById(@PathVariable Long id){
-//        return bookService.getBookById(id);
-//    }
-//    @PostMapping
-//    void createBook(@RequestBody Book book){
-//        bookService.createBook(book);
-//    }
+    @GetMapping("/{id}")
+    Book getBookById(@PathVariable Long id){
+        return bookService.getBookById(id);
+    }
+    @PostMapping
+    void createBook(@RequestBody Book book){
+        bookService.createBook(book);
+    }
 
 
 }

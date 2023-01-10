@@ -2,11 +2,13 @@ package com.kniznica.Book.Author.author.controller;
 
 
 import com.kniznica.Book.Author.author.domain.Author;
+import com.kniznica.Book.Author.author.domain.AuthorDTO;
 import com.kniznica.Book.Author.author.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 @RestController
@@ -25,15 +27,15 @@ public class AuthorController {
 
 
      //Get all
-//    @GetMapping
-//    List<Author> allAuthors(@RequestParam(defaultValue = "createdAt", required = false) String sortBy){
-//        return authorService.getAllAuthors(sortBy);
-//    }
+    @GetMapping
+    List<Author> allAuthors(@RequestParam(defaultValue = "createdAt", required = false) String sortBy, Pageable page){
+        return authorService.getAllAuthors(sortBy);
+    }
 
 
     // Get by id
     @GetMapping("/{id}")
-    Author getAuthorById(@PathVariable Long id) throws Exception {
+    AuthorDTO getAuthorById(@PathVariable Long id) throws Exception {
         return authorService.findAuthorById(id);
     }
 
@@ -54,6 +56,7 @@ public class AuthorController {
 
 
     }
+
 
 
 

@@ -17,11 +17,13 @@ public class Author {
 
     @CreatedDate
     @Column(name = "created_at", insertable = false, updatable = false,
-            columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+            columnDefinition = "TIMESTAMP DEFAULT now()")
     private LocalDateTime createdAt;
 
     @Column
     private String name;
+
+    private String x;
 
     @ManyToMany(mappedBy = "allAuthors")
     public Set<Book> allBook = new HashSet<>();
@@ -54,5 +56,14 @@ public class Author {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", createdAt=" + createdAt +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
