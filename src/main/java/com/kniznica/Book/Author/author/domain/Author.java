@@ -1,6 +1,7 @@
 package com.kniznica.Book.Author.author.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.kniznica.Book.Author.book.domain.Book;
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -23,7 +24,6 @@ public class Author {
     @Column
     private String name;
 
-    private String x;
 
     @ManyToMany(mappedBy = "allAuthors")
     public Set<Book> allBook = new HashSet<>();

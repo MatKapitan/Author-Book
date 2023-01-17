@@ -7,6 +7,8 @@ import com.kniznica.Book.Author.author.domain.Author;
 import com.kniznica.Book.Author.book.domain.Book;
 import com.kniznica.Book.Author.book.domain.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,8 +31,8 @@ public class AuthorService {
         authorRepository.save(author);
     }
 
-    public List<Author> getAllAuthors(String sortBy){
-        return authorRepository.findAll(sortBy);
+    public Page<Author> getAllAuthors(Pageable pageable){
+        return authorRepository.findAll(pageable);
     }
 
     public AuthorDTO findAuthorById(Long id) throws Exception {

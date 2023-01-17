@@ -1,9 +1,11 @@
 package com.kniznica.Book.Author.book.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.kniznica.Book.Author.author.domain.Author;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,6 +20,9 @@ public class Book {
     private String isbn;
     private String genre;
 
+    private LocalDateTime publishingDate;
+
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Author_Book",
             joinColumns = @JoinColumn(name = "book_id"),

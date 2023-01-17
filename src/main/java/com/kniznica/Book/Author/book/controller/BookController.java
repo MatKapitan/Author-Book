@@ -28,6 +28,16 @@ public class BookController {
     void createBook(@RequestBody Book book){
         bookService.createBook(book);
     }
+    @PutMapping("/publish/{id}")
+    int publishBook(@PathVariable Long id){
+        bookService.publishBook(id);
+        return 1;
+    }
+
+    @GetMapping("/attribute/{any}")
+    List<Book> searchByAniAtribute(@PathVariable String any){
+        return bookService.findBookByAny(any);
+    }
 
 
 }
