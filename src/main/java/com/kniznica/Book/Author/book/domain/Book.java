@@ -36,7 +36,11 @@ public class Book {
         this.isbn = isbn;
         this.genre = genre;
     }
-    public Book(){};
+
+    public Book() {
+    }
+
+    ;
 
     public Long getId() {
         return id;
@@ -66,5 +70,11 @@ public class Book {
         this.genre = genre;
     }
 
+    public LocalDateTime getPublishingDate() {
+        return publishingDate;
+    }
 
+    public void setPublishingDate(LocalDateTime publishingDate) {
+        this.publishingDate = publishingDate;
+    }
 }

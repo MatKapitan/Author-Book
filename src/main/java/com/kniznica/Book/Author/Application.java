@@ -5,14 +5,12 @@ import com.kniznica.Book.Author.author.domain.AuthorRepository;
 import com.kniznica.Book.Author.author.service.AuthorService;
 import com.kniznica.Book.Author.book.domain.Book;
 import com.kniznica.Book.Author.book.domain.BookRepository;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
 
 @SpringBootApplication
 public class Application {
@@ -70,7 +68,7 @@ public class Application {
 			"fv54tz-45znfgnf", "324235-gfbrtmju", "g45z65r-uvbd-2", "36z45zfbd-sdfsvs-145", "efwfwe0-98070fwef", "fbb097-89ashhoi","dgvfv-df56756", "efwefwsv-sdv3343"};
 
 			for(int i =0; i < 14; i++){
-				bookRepository.save(createBook(knigeIme14[i],isbn14[i],"crime" ));
+				bookRepository.save(createBook(knigeIme14[i], RandomStringUtils.randomAlphanumeric(10),"crime" ));
 				authorService.addBookToAuthor((long) (i+2), (long) (i+2));
 			}
 

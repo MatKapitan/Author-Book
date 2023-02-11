@@ -4,6 +4,8 @@ package com.kniznica.Book.Author.book.service;
 import com.kniznica.Book.Author.book.domain.Book;
 import com.kniznica.Book.Author.book.domain.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +22,7 @@ public class BookService {
     }
 
     public Book getBookById(Long id) {
-        return bookRepository.findById(id).get();
+        return bookRepository.findById(id).orElseThrow();
     }
 
     public void createBook(Book book) {
@@ -28,12 +30,11 @@ public class BookService {
     }
 
     @Transactional
-    public int publishBook(Long id) {
+    public void publishBook(Long id) {
         bookRepository.publishBookQuery(id);
-        return 1;
     }
 
-    public List<Book> findBookByAny(String searchAtribute){
-        return bookRepository.getBookByAny(searchAtribute);
+    public Page<Book> findBookByAny(String searchAttribute, Pageable page){
+        return bookRepository.getBookByAny(searchAttribute, page);
     }
 }
